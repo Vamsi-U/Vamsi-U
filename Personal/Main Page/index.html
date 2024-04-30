@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamsi Unta</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/7bf0348552.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="vamsi-logo.png" class="logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                     
+                </ul>
+               
+            </nav>
+            <div class="header-text">
+                <p> > FRONTEND Devolper </p>
+                <h1>Hi, I'm <span>Vamsi</span><br>Unta From India.</h1>
+            </div>
+        </div>
+        
+    </div>
+<!----about me -->
+  <div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1"></div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>kuch bhi </p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        
+                        <li><span>Web devolper</span><br>Web app devolpment</li>
+                        <li><span>Media</span><br>Content creator</li>
+                       
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>2022-23</span><br>IITM TV ACC</li>
+                        <li><span>2022-23</span><br>CEA Dnsr deputy coordinator</li>
+                        <li><span>2023-24</span><br>CEA Dnsr deputy coordinator</li>
+                        
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        
+                        <li><span>2022-26</span><br>IIT MADRAS</li>
+                        <li><span>2020-22</span><br>VISWASAI</li>
+                        <li><span>2018-20</span><br>SAVES</li>
+                    </ul>
+                </div>
+
+
+                
+
+            </div>
+        </div>
+
+    </div>
+
+  </div>
+<!--------contact me -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="left-colum">
+           <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa-solid fa-paper-plane"></i> untavamsi78@gmail.com</p>
+           <p><i class="fa-solid fa-phone"></i> 9676869219</p>
+                <div class="soc-icons">
+                    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+
+                </div>
+            </div>
+            <div class="right-colum">
+                <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="Email" placeholder="Your Email" required>
+                <textarea name="message"  rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn">Submit</button>
+                </form>
+               <span id="msg"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="copyright">
+        <p>copyright <i class="fa-regular fa-copyright"></i> Vamsi Made with <i class="fa-solid fa-heart"></i> by Vamsi</p>
+    </div>
+</div>
+
+<script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classlist.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classlist.remove("active-tab");
+        }
+       
+     }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwHIFGLjONKVhaWqImu7A73UW7W83fwWvjqyocvmFPLz8ULOHLo9de21Woyk6jVXrqz/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg=document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML ="Message Sent sucessfully!"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
